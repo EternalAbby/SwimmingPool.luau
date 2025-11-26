@@ -1,0 +1,6 @@
+std = "roblox"
+exclude = ["luau-lsp.luaurc"]
+
+[lints]
+mixed_table = "allow"
+incorrect_standard_library_use = "allow"
