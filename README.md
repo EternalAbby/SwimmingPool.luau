@@ -1,5 +1,9 @@
 # SwimmingPool - A Luau module for Object Pool Pattern
 
+VERSION: 0.1.0
+
+This module is currently in its early stage of development. Full release may happen when custom objects via metatables and other features (if any) are added. It is released in an unstable state because it relatively simple and effective.
+
 -- TEMPORARY PLACEHOLDER TEXT --
 
 A Luau module made as a general optimization to storing and reusing frequently used objects which are constantly constructed and destroyed.

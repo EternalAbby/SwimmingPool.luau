@@ -31,6 +31,9 @@
 	For clean-up, it extends clearing by also removing all of the information of
 	the `PoolObject`.
 	
+	This module may include support for objects created via metatables in the future.
+	It is not a high priority right now, nor was it ever the intent of this module.
+	
 	
 	-- DOCUMENTATION --
 	
@@ -49,14 +52,13 @@
 		`protected` determines whether `PoolObject` can be removed using the module.
 		
 		There cannot be multiple `PoolObject`s with the same `id` at a time.
-		Attempting to create one will throw an error.
+		Attempting to create one with a duplicate id will throw an error.
 	
 	- .destroy(id: string): nil
-		Clears all values within the `PoolObject`. The `id` will be available
-		after that.
+		Clears all values within the `PoolObject`. `id` will become available
+		after this method is completed.
 		
 		If the `PoolObject` is protected, throws an error.
-		
 		If the `PoolObject` is not found, does nothing.
 	
 	* PoolObject
@@ -78,10 +80,10 @@
 		This method does not check if `object` is related to `original`.
 		
 		This method will automatically set the `.Parent` property of `object` to `nil`.
-		This will remove `object` from the `game` but not "destroyed".
+		It will remove `object` from the `game` but not is not rendered as "destroyed".
 	
 	- :clear(self: PoolObject): nil
-		Clear all objects stored in the internal pool.
+		Clears all objects stored in the internal pool.
 	
 --------------------------------------------------------------------------------
 ]]
@@ -89,8 +91,8 @@
 -- TODO: [NOT NECESSARY] Methods to allow changes to the `PoolObject` after creation.
 -- TODO: [NOT NECESSARY] Implement prototype-based objects support.
 
-type UnknownTable = {[unknown]: unknown}
-type CustomObject = setmetatable<UnknownTable, UnknownTable>
+--type UnknownTable = {[unknown]: unknown}
+--type CustomObject = setmetatable<UnknownTable, UnknownTable>
 
 type InitializerFunction = (Instance) -> nil
 
